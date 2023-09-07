@@ -1,26 +1,27 @@
-import { Injectable } from '@nestjs/common';
-import { CreateTimeClockDto } from './dto/create-time-clock.dto';
-import { UpdateTimeClockDto } from './dto/update-time-clock.dto';
+import { Injectable, Inject } from '@nestjs/common';
+import { ITimeClockService } from './interfaces/timeclock.service.interface';
+import { ITimeClockRepository } from './interfaces/timeclock.repository.interface';
+import { TimeClock } from './entities/time-clock.entity';
 
 @Injectable()
-export class TimeClockService {
-  create(createTimeClockDto: CreateTimeClockDto) {
-    return 'This action adds a new timeClock';
+export class TimeClockService implements ITimeClockService {
+  constructor(
+    @Inject(ITimeClockRepository)
+    private readonly timeClockRepository: ITimeClockRepository,
+  ) {}
+  async create(payload: TimeClock): Promise<any> {
+    return await this.timeClockRepository.create(payload);
   }
 
-  findAll() {
-    return `This action returns all timeClock`;
+  async getAll(): Promise<any[]> {
+    return await this.timeClockRepository.getAll();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} timeClock`;
+  async getById(id: number): Promise<any> {
+    return await this.timeClockRepository.getById(id);
   }
 
-  update(id: number, updateTimeClockDto: UpdateTimeClockDto) {
-    return `This action updates a #${id} timeClock`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} timeClock`;
+  async update(id: number, payload: TimeClock): Promise<any> {
+    return await this.timeClockRepository.update(id, payload);
   }
 }

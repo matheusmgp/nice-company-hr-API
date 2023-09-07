@@ -1,4 +1,4 @@
-import { Reflector } from '@nestjs/core';
+import { HttpAdapterHost, Reflector } from '@nestjs/core';
 import {
   ClassSerializerInterceptor,
   INestApplication,
@@ -20,5 +20,6 @@ export function applyGlobalConfig(app: INestApplication) {
     new TransformationInterceptor(),
     new ClassSerializerInterceptor(app.get(Reflector)),
   );
-  app.useGlobalFilters(new PrismaClientExceptionFilter());
+  const { httpAdapter } = app.get(HttpAdapterHost);
+  app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
 }

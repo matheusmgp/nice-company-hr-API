@@ -6,7 +6,7 @@ import { PrismaClient } from '@prisma/client';
 @Module({
   imports: [],
   providers: [PrismaService, ConfigService],
-  exports: [ConfigService],
+  exports: [ConfigService, PrismaService],
 })
 export class PrismaModule {
   static forTest(prismaClient: PrismaClient): DynamicModule {

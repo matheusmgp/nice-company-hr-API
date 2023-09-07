@@ -1,4 +1,7 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateTimeClockDto } from './create-time-clock.dto';
+import { IsBoolean, IsNotEmpty } from 'class-validator';
 
-export class UpdateTimeClockDto extends PartialType(CreateTimeClockDto) {}
+export class UpdateTimeClockDto {
+  @IsNotEmpty()
+  @IsBoolean()
+  status: string;
+}

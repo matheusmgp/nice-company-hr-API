@@ -11,21 +11,14 @@ datasource db {
 }
 
 model Register {
-  id        Int         @id @default(autoincrement())
-  name      String
-  email     String
-  cpf       String
-  phone     String
-  knowledge Knowledge[]
+  id         Int      @id @default(autoincrement())
+  name       String
+  email      String
+  cpf        String
+  phone      String
+  status     Boolean
+  assignedAt DateTime @default(now())
+  knowledges String
 
   @@map("registers")
-}
-
-model Knowledge {
-  id         Int       @id @default(autoincrement())
-  name       String
-  Register   Register? @relation(fields: [registerId], references: [id])
-  registerId Int?
-
-  @@map("knowledges")
 }

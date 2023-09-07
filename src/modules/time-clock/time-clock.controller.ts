@@ -1,34 +1,42 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { TimeClockService } from './time-clock.service';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Inject,
+} from '@nestjs/common';
 import { CreateTimeClockDto } from './dto/create-time-clock.dto';
 import { UpdateTimeClockDto } from './dto/update-time-clock.dto';
+import { ITimeClockService } from './interfaces/timeclock.service.interface';
+import { mapperCreate } from './mapper/dto-to-entity';
 
 @Controller('time-clock')
 export class TimeClockController {
-  constructor(private readonly timeClockService: TimeClockService) {}
+  constructor(
+    @Inject(ITimeClockService)
+    private readonly timeClockService: ITimeClockService,
+  ) {}
 
   @Post()
-  create(@Body() createTimeClockDto: CreateTimeClockDto) {
-    return this.timeClockService.create(createTimeClockDto);
+  async create(@Body() dto: CreateTimeClockDto) {
+    return await this.timeClockService.create(mapperCreate(dto));
   }
 
   @Get()
-  findAll() {
-    return this.timeClockService.findAll();
+  async findAll() {
+    return await this.timeClockService.getAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.timeClockService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    console.log('id', id);
+    return await this.timeClockService.getById(+id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTimeClockDto: UpdateTimeClockDto) {
-    return this.timeClockService.update(+id, updateTimeClockDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.timeClockService.remove(+id);
+  update(@Param('id') id: string, @Body() dto: UpdateTimeClockDto) {
+    return this.timeClockService.update(+id, dto);
   }
 }
