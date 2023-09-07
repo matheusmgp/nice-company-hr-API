@@ -9,6 +9,9 @@ export class TimeClockService implements ITimeClockService {
     @Inject(ITimeClockRepository)
     private readonly timeClockRepository: ITimeClockRepository,
   ) {}
+  async getByCpf(cpf: string): Promise<any> {
+    return await this.timeClockRepository.getByCpf(cpf);
+  }
   async create(payload: TimeClock): Promise<any> {
     return await this.timeClockRepository.create(payload);
   }

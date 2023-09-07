@@ -6,11 +6,13 @@ import {
   Patch,
   Param,
   Inject,
+  UsePipes,
 } from '@nestjs/common';
 import { CreateTimeClockDto } from './dto/create-time-clock.dto';
 import { UpdateTimeClockDto } from './dto/update-time-clock.dto';
 import { ITimeClockService } from './interfaces/timeclock.service.interface';
 import { mapperCreate } from './mapper/dto-to-entity';
+import { CheckIfCpfExistsPipe } from './pipes/check-if-cpf-exists.pipe';
 
 @Controller('time-clock')
 export class TimeClockController {
@@ -20,6 +22,7 @@ export class TimeClockController {
   ) {}
 
   @Post()
+  @UsePipes(CheckIfCpfExistsPipe)
   async create(@Body() dto: CreateTimeClockDto) {
     return await this.timeClockService.create(mapperCreate(dto));
   }
@@ -31,7 +34,6 @@ export class TimeClockController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    console.log('id', id);
     return await this.timeClockService.getById(+id);
   }
 

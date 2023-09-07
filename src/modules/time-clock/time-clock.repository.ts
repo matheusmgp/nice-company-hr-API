@@ -6,6 +6,13 @@ import { TimeClock } from './entities/time-clock.entity';
 @Injectable()
 export class TimeClockRepository implements ITimeClockRepository {
   constructor(private readonly prismaService: PrismaService) {}
+  async getByCpf(cpf: string): Promise<any> {
+    return await this.prismaService.register.findFirst({
+      where: {
+        cpf,
+      },
+    });
+  }
   async getAll(): Promise<any[]> {
     return await this.prismaService.register.findMany({
       orderBy: {
