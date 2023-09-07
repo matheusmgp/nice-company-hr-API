@@ -16,7 +16,7 @@ model Register {
   email      String
   cpf        String
   phone      String
-  status     Boolean
+  status     String
   assignedAt DateTime  @default(now())
   knowledges String
   updatedAt  DateTime?

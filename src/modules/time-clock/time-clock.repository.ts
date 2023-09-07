@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ITimeClockRepository } from './interfaces/timeclock.repository.interface';
 import { PrismaService } from '../prisma/prisma.service';
 import { TimeClock } from './entities/time-clock.entity';
+import { TimeClockStatusEnum } from '@/shared/enums/time-clock-status.enum';
 
 @Injectable()
 export class TimeClockRepository implements ITimeClockRepository {
@@ -14,6 +15,7 @@ export class TimeClockRepository implements ITimeClockRepository {
     });
   }
   async getAll(): Promise<any[]> {
+    //await this.prismaService.register.deleteMany({});
     return await this.prismaService.register.findMany({
       orderBy: {
         name: 'asc',

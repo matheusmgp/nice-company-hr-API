@@ -1,7 +1,7 @@
-import { IsBoolean, IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsString } from 'class-validator';
 
 export class UpdateTimeClockDto {
   @IsNotEmpty()
-  @IsBoolean()
+  @IsString()
   status: string;
 }

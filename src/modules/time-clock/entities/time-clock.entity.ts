@@ -3,6 +3,6 @@ export class TimeClock {
   email: string;
   cpf: string;
   phone: string;
-  status: boolean;
+  status: string;
   knowledges: string;
 }

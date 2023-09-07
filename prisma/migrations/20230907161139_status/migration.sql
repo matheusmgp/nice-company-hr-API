@@ -5,7 +5,7 @@ CREATE TABLE "registers" (
     "email" TEXT NOT NULL,
     "cpf" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
-    "status" BOOLEAN NOT NULL,
+    "status" TEXT NOT NULL,
     "assignedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "knowledges" TEXT NOT NULL,
     "updatedAt" TIMESTAMP(3),
