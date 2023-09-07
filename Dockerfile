@@ -1,5 +1,3 @@
-FROM node:19-slim
+FROM postgres
 
-WORKDIR /home/node/app
-
-CMD [ "tail", "-f", "/dev/null" ]
+RUN usermod -u 1000 postgres
