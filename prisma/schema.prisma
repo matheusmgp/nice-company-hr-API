@@ -11,14 +11,15 @@ datasource db {
 }
 
 model Register {
-  id         Int      @id @default(autoincrement())
+  id         Int       @id @default(autoincrement())
   name       String
   email      String
   cpf        String
   phone      String
   status     Boolean
-  assignedAt DateTime @default(now())
+  assignedAt DateTime  @default(now())
   knowledges String
+  updatedAt  DateTime?
 
   @@map("registers")
 }

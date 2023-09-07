@@ -41,6 +41,7 @@ export class TimeClockRepository implements ITimeClockRepository {
       },
       data: {
         status: payload.status,
+        updatedAt: new Date(),
       },
     });
   }
