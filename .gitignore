@@ -1,7 +1,7 @@
 # compiled output
 /dist
 /node_modules
-
+/files
 # Logs
 logs
 *.log
@@ -11,6 +11,15 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+
+.docker/*
+!.docker/entrypoint.sh
+!.docker/postgres/Dockerfile
+
+.env
+.env.development
+.env.test
+tsconfig.tsbuildinfo
 # OS
 .DS_Store
 
