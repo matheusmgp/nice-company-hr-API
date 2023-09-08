@@ -3,6 +3,7 @@ import {
   IsArray,
   IsEmail,
   IsNotEmpty,
+  IsOptional,
   IsString,
   MaxLength,
 } from 'class-validator';
@@ -26,7 +27,7 @@ export class CreateTimeClockDto {
   @MaxLength(14)
   @ApiProperty()
   cpf: string;
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   @MaxLength(20)
   @ApiProperty()

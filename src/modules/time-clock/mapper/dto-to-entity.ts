@@ -10,7 +10,7 @@ export const mapperCreate = (dto: CreateTimeClockDto): TimeClock => {
     name,
     email,
     cpf: formatCpfOnlyNumber(cpf),
-    phone: formatPhoneOnlyNumber(phone),
+    phone: phone ? formatPhoneOnlyNumber(phone) : '',
     knowledges: knowledges.join(),
     status: TimeClockStatusEnum.PENDENTE,
   });

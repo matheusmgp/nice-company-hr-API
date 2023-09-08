@@ -68,6 +68,28 @@ describe('TimeClock create e2e test', () => {
       timestamp: expect.any(String),
     });
   });
+  it('should create a register with empty phone field', async () => {
+    const response = await request(app.getHttpServer())
+      .post('/time-clock')
+      .send({ ...createDto, phone: '' })
+      .expect(201);
+    expect(response.body).toStrictEqual({
+      data: {
+        id: expect.any(Number),
+        name: 'test name',
+        email: 'a@a.com',
+        cpf: '60412390388',
+        phone: '',
+        status: 'PENDENTE',
+        assignedAt: expect.any(String),
+        knowledges: 'PHP,GIT,Typescript',
+        updatedAt: null,
+      },
+      statusCode: 201,
+      method: 'POST',
+      timestamp: expect.any(String),
+    });
+  });
   it('should throws exception 422 when dto name field is empty', async () => {
     const res = await request(app.getHttpServer())
       .post('/time-clock')
@@ -106,19 +128,6 @@ describe('TimeClock create e2e test', () => {
       'cpf must be shorter than or equal to 14 characters',
       'cpf must be a string',
       'cpf should not be empty',
-    ]);
-  });
-  it('should throws exception 422 when dto phone field is empty', async () => {
-    const res = await request(app.getHttpServer())
-      .post('/time-clock')
-      .send({ ...createDto, phone: null })
-      .expect(422);
-    expect(res.body.statusCode).toBe(422);
-    expect(res.body.error).toBe('Unprocessable Entity');
-    expect(res.body.message).toStrictEqual([
-      'phone must be shorter than or equal to 20 characters',
-      'phone must be a string',
-      'phone should not be empty',
     ]);
   });
   it('should throws exception 422 when dto knowledges field is empty', async () => {

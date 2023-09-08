@@ -59,6 +59,20 @@ describe('TimeClockService integration test', () => {
       updatedAt: null,
     });
   });
+  it(`should create a register with empty phone field`, async () => {
+    const response = await sut.create({ ...entity, phone: '' });
+    expect(response).toStrictEqual({
+      id: expect.any(Number),
+      name: 'mock name',
+      email: 'mock@email.com',
+      cpf: '60412390388',
+      phone: '',
+      status: 'PENDENTE',
+      assignedAt: expect.any(Date),
+      knowledges: 'GIT,javascript,Typescript',
+      updatedAt: null,
+    });
+  });
   it(`should update a register status`, async () => {
     const created = await prismaService.register.create({ data: entity.props });
     const response = await sut.update(created.id, {
