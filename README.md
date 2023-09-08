@@ -4,12 +4,10 @@ Fake API for NICE COMPANY HR company.
 
 ## Setup
 
-1 - Clone the repository,at branch DEVELOP.
-
+1 - Clone the repository
 ```bash
 $ git clone https://github.com/matheusmgp/nice-company-hr-API.git
 
-$ git checkout develop
 ```
 
 2 - Install the project dependencies
