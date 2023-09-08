@@ -8,6 +8,8 @@ Fake API for NICE COMPANY HR company.
 
 ```bash
 $ git clone https://github.com/matheusmgp/nice-company-hr-API.git
+
+$ git checkout develop
 ```
 
 2 - Install the project dependencies
@@ -22,6 +24,8 @@ $ npm install
 
 ```bash
 $ docker-compose up -d
+
+$ npx prisma migrate dev
 ```
 
 ## Running the app
