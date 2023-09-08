@@ -19,7 +19,7 @@ export class TransformationInterceptor<T>
     next: CallHandler,
   ): Observable<Response<T>> {
     return next.handle().pipe(
-      map((data) => ({
+      map(data => ({
         data: data,
         statusCode: context.switchToHttp().getResponse().statusCode,
         method: context.switchToHttp().getResponse().req.method,

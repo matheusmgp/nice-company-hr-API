@@ -3,4 +3,5 @@ export interface IBaseRepository<T> {
   getById(id: number): Promise<any>;
   create(payload: T): Promise<any>;
   update(id: number, payload: any): Promise<any>;
+  getByCpf(cpf: string): Promise<any>;
 }

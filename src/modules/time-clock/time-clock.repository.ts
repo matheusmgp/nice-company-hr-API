@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { ITimeClockRepository } from './interfaces/timeclock.repository.interface';
 import { PrismaService } from '../prisma/prisma.service';
 import { TimeClock } from './entities/time-clock.entity';
-import { TimeClockStatusEnum } from '@/shared/enums/time-clock-status.enum';
 
 @Injectable()
 export class TimeClockRepository implements ITimeClockRepository {
