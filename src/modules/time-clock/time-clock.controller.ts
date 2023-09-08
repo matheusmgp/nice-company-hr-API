@@ -13,8 +13,10 @@ import { UpdateTimeClockDto } from './dto/update-time-clock.dto';
 import { ITimeClockService } from './interfaces/timeclock.service.interface';
 import { mapperCreate } from './mapper/dto-to-entity';
 import { CheckIfCpfExistsPipe } from './pipes/check-if-cpf-exists.pipe';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('time-clock')
+@ApiTags('TimeClock')
 export class TimeClockController {
   constructor(
     @Inject(ITimeClockService)
