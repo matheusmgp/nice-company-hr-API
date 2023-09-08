@@ -2,7 +2,6 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TimeClockService } from '../../time-clock.service';
 import { ITimeClockService } from '../../interfaces/timeclock.service.interface';
 import { TimeClockModule } from '../../time-clock.module';
-import { PrismaService } from '../../../prisma/prisma.service';
 import { PrismaModule } from '../../../prisma/prisma.module';
 import { TimeClock } from '../../entities/time-clock.entity';
 import { formatCpfOnlyNumber } from '@/shared/utils/cpf.util';
