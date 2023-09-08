@@ -7,7 +7,7 @@ import { TimeClock } from '../../entities/time-clock.entity';
 import { formatCpfOnlyNumber } from '@/shared/utils/cpf.util';
 import { formatPhoneOnlyNumber } from '@/shared/utils/phone.util';
 import { TimeClockStatusEnum } from '@/shared/enums/time-clock-status.enum';
-import { setupPrismaTests } from '../../testing/setup-prisma-tests';
+import { setupPrismaTests } from '../testing/setup-prisma-tests';
 import { PrismaClient } from '@prisma/client';
 import { TimeClockRepository } from '../../time-clock.repository';
 import { ITimeClockRepository } from '../../interfaces/timeclock.repository.interface';

@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import request from 'supertest';
 import { INestApplication } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
-import { setupPrismaTests } from '../../testing/setup-prisma-tests';
+import { setupPrismaTests } from '../testing/setup-prisma-tests';
 import { EnvConfigModule } from '@/shared/env-config/env-config.module';
 import { TimeClockModule } from '../../time-clock.module';
 import { PrismaModule } from '@/modules/prisma/prisma.module';
