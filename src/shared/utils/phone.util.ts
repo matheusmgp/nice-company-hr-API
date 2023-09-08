@@ -5,5 +5,8 @@ export const formatPhoneOnlyNumber = phone => {
     .replace('(', '')
     .replace(')', '')
     .replace(' ', '');
-  return numeros;
+
+  if (!Number.isNaN(Number(numeros))) return numeros;
+
+  return null;
 };

@@ -92,9 +92,25 @@ describe('TimeClockService integration test', () => {
       updatedAt: expect.any(Date),
     });
   });
-  it(`should return a single register`, async () => {
+  it(`should return a single register byId`, async () => {
     const created = await prismaService.register.create({ data: entity.props });
     const response = await sut.getById(created.id);
+
+    expect(response).toStrictEqual({
+      id: expect.any(Number),
+      name: 'mock name',
+      email: 'mock@email.com',
+      cpf: '60412390388',
+      phone: '85998033564',
+      status: 'PENDENTE',
+      assignedAt: expect.any(Date),
+      knowledges: 'GIT,javascript,Typescript',
+      updatedAt: null,
+    });
+  });
+  it(`should return a single register byCpf`, async () => {
+    const created = await prismaService.register.create({ data: entity.props });
+    const response = await sut.getByCpf(created.cpf);
 
     expect(response).toStrictEqual({
       id: expect.any(Number),

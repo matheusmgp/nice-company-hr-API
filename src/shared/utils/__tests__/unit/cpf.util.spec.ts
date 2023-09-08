@@ -1,4 +1,4 @@
-import { formatCpfOnlyNumber } from '../cpf.util';
+import { formatCpfOnlyNumber } from '../../cpf.util';
 
 describe('CpfFormatter unit tests', () => {
   it('should replace all symbols', () => {
