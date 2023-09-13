@@ -6,6 +6,9 @@ import {
 } from '@nestjs/common';
 import { TransformationInterceptor } from './shared/interceptors/http-global-interceptior';
 import { PrismaClientExceptionFilter } from './shared/exceptions-filters/prisma-client-exception/prisma-client-exception.filter';
+import { NotFoundErrorFilter } from './shared/exceptions-filters/not-found-error/not-found-error.filter';
+import { ConflictErrorFilter } from './shared/exceptions-filters/conflict-error/conflict-error.filter';
+import { DatabaseErrorFilter } from './shared/exceptions-filters/database-error/database-error.filter';
 
 export function applyGlobalConfig(app: INestApplication) {
   app.useGlobalPipes(
@@ -21,5 +24,10 @@ export function applyGlobalConfig(app: INestApplication) {
     new ClassSerializerInterceptor(app.get(Reflector)),
   );
   const { httpAdapter } = app.get(HttpAdapterHost);
-  app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
+  app.useGlobalFilters(
+    new PrismaClientExceptionFilter(httpAdapter),
+    new NotFoundErrorFilter(),
+    new ConflictErrorFilter(),
+    new DatabaseErrorFilter(),
+  );
 }
