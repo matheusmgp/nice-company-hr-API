@@ -11,6 +11,7 @@ import { setupPrismaTests } from '../testing/setup-prisma-tests';
 import { PrismaClient } from '@prisma/client';
 import { TimeClockRepository } from '../../time-clock.repository';
 import { ITimeClockRepository } from '../../interfaces/timeclock.repository.interface';
+import { NotFoundError } from '@/shared/errors/not-found-error';
 
 describe('TimeClockService integration test', () => {
   let sut: ITimeClockService;
@@ -140,5 +141,18 @@ describe('TimeClockService integration test', () => {
         updatedAt: null,
       },
     ]);
+  });
+
+  it('should throws NotFoundError error when register not found in getById method', async () => {
+    await expect(() => sut.getById(0)).rejects.toThrow(
+      new NotFoundError(`Register not found using ID 0`),
+    );
+  });
+  it('should throws NotFoundError error when register not found in update method', async () => {
+    await expect(() =>
+      sut.update(0, {
+        status: 'VALIDADO',
+      }),
+    ).rejects.toThrow(new NotFoundError(`Register not found using ID 0`));
   });
 });

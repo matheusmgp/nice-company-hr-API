@@ -73,6 +73,6 @@ describe('TimeClock getById e2e test', () => {
       .get(`/time-clock/9999`)
       .expect(404);
     expect(res.body.statusCode).toBe(404);
-    expect(res.body.message).toStrictEqual(' No Register found');
+    expect(res.body.message).toStrictEqual('Register not found using ID 9999');
   });
 });
