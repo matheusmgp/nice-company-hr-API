@@ -95,4 +95,13 @@ describe('TimeClock update e2e test', () => {
       'status should not be empty',
     ]);
   });
+  it('should throws exception 404 when id not found', async () => {
+    const res = await request(app.getHttpServer())
+      .patch(`/time-clock/${0}`)
+      .send(updateDto)
+      .expect(404);
+    expect(res.body.statusCode).toBe(404);
+    expect(res.body.error).toBe('Not Found');
+    expect(res.body.message).toStrictEqual('Register not found using ID 0');
+  });
 });

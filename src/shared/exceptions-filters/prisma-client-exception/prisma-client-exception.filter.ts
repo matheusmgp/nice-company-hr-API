@@ -30,6 +30,7 @@ export class PrismaClientExceptionFilter extends BaseExceptionFilter {
     P2002: HttpStatus.CONFLICT,
     P2025: HttpStatus.NOT_FOUND,
     P2010: HttpStatus.BAD_REQUEST,
+    P1001: HttpStatus.INTERNAL_SERVER_ERROR,
   };
 
   /**
